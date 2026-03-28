@@ -31,8 +31,8 @@ print(names(ds_raw))
 cat("\n=== First 10 rows ===\n")
 print(head(ds_raw, 10))
 
-# Also load DM domain (needed for derive_study_day)
-dm <- pharmaverseraw::dm_raw
+# Also load SDTM DM domain (needed for derive_study_day)
+dm <- pharmaversesdtm::dm
 
 # --- Step 2: Generate OAK ID Variables ---------------------------------------
 # This adds oak_id, raw_source, and patient_number columns needed by
@@ -79,25 +79,40 @@ study_ct <- data.frame(
   )
 )
 
+# mapping the OTHERSP to main DS domain for future use
+
+ds <-
+  assign_no_ct(
+    raw_dat = ds_raw,
+    raw_var = "OTHERSP",
+    tgt_var = "OTHERSP",
+    id_vars = oak_id_vars()
+  ) 
+
+
 # --- Step 4: Map Variables Using sdtm.oak Functions --------------------------
 
 # 4a. Derive DSTERM (topic variable) — no controlled terminology needed
 #     Raw variable: IT.DSTERM → SDTM variable: DSTERM
-ds <-
+
+
+ds <- ds %>% 
   assign_no_ct(
     raw_dat = ds_raw,
     raw_var = "IT.DSTERM",
     tgt_var = "DSTERM",
     id_vars = oak_id_vars()
-  )
+  ) 
+
+ds_raw2 <- ds_raw %>% mutate(IT_DSDECOD=toupper(IT.DSDECOD))
 
 # 4b. Map DSDECOD using controlled terminology
 #     Raw variable: IT.DSTERM → SDTM variable: DSDECOD
 #     Uses codelist C66727 to decode collected values to standard terms
 ds <- ds %>%
   assign_ct(
-    raw_dat  = ds_raw,
-    raw_var  = "IT.DSTERM",
+    raw_dat  = ds_raw2,
+    raw_var  = "IT_DSDECOD",
     tgt_var  = "DSDECOD",
     ct_spec  = study_ct,
     ct_clst  = "C66727",
@@ -105,14 +120,15 @@ ds <- ds %>%
   )
 
 # 4c. Map DSCAT — disposition category (no CT needed, direct mapping)
-#     Raw variable: FORML → SDTM variable: DSCAT
-ds <- ds %>%
-  assign_no_ct(
-    raw_dat = ds_raw,
-    raw_var = "FORML",
-    tgt_var = "DSCAT",
-    id_vars = oak_id_vars()
-  )
+
+
+ds <- ds %>% mutate(DSDECOD=ifelse(!is.na(OTHERSP),toupper(OTHERSP),DSDECOD),
+                    DSTERM=ifelse(!is.na(OTHERSP),OTHERSP,DSTERM),
+                    DSCAT=case_when(is.na(OTHERSP) & DSDECOD=='RANDOMIZED' ~ 'PROTOCOL MILESTONE',
+                                    is.na(OTHERSP) & DSDECOD!='RANDOMIZED' ~ 'DISPOSITION EVENT',
+                                    !is.na(OTHERSP)  ~ 'OTHER EVENT')
+                    )
+
 
 # 4d. Map DSDTC — disposition collection date
 #     Raw variable: DSDTCOL → SDTM variable: DSDTC
@@ -121,7 +137,7 @@ ds <- ds %>%
     raw_dat = ds_raw,
     raw_var = "DSDTCOL",
     tgt_var = "DSDTC",
-    raw_fmt = c("m/d/y"),
+    raw_fmt = "m-d-y",
     id_vars = oak_id_vars()
   )
 
@@ -132,7 +148,7 @@ ds <- ds %>%
     raw_dat = ds_raw,
     raw_var = "IT.DSSTDAT",
     tgt_var = "DSSTDTC",
-    raw_fmt = c("m/d/y"),
+    raw_fmt = "m-d-y",
     id_vars = oak_id_vars()
   )
 
@@ -189,13 +205,14 @@ ds <- ds %>%
 # Uses sdtm.oak's derive_study_day() — same pattern as AE code
 # DSSTDY = DSSTDTC - RFSTDTC + 1 (if >= RFSTDTC), else DSSTDTC - RFSTDTC
 
-# ds <- ds %>%
-#   derive_study_day(
-#     dtc_var   = "DSSTDTC",
-#     day_var   = "DSSTDY",
-#     ref_dt_var = "RFSTDTC",
-#     source_dtc = "DSSTDTC"
-#   )
+
+ds <- ds %>% derive_study_day(
+  dm,
+  "DSSTDTC",
+  "RFSTDTC",
+  "DSSTDY",
+  merge_key = "USUBJID"
+)
 
 
 # --- Step 8: Select and Order Final SDTM Variables ---------------------------
@@ -204,7 +221,7 @@ ds <- ds %>%
     "STUDYID", "DOMAIN", "USUBJID", "DSSEQ",
     "DSTERM", "DSDECOD", "DSCAT",
     "VISITNUM", "VISIT",
-    "DSDTC", "DSSTDTC"
+    "DSDTC", "DSSTDTC", "DSSTDY"
   )
 
 # --- Step 9: Quality Checks -------------------------------------------------
