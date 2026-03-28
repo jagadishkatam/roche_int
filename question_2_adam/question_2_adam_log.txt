@@ -1,0 +1,24 @@
+=== ADSL Creation Log ===
+Date: 2026-03-28 20:22:05.143871 
+R Version: R version 4.5.0 (2025-04-11) 
+admiral version: 1.4.1 
+
+Input datasets:
+  DM: 306 rows
+  VS: 29643 rows
+  EX: 591 rows
+  DS: 850 rows
+  AE: 1191 rows
+
+Output:
+  ADSL: 306 subjects x 27 variables
+
+Derived variables:
+  AGEGR9  — Age groups: <18, 18-50, >50
+  AGEGR9N — Numeric: 1, 2, 3
+  TRTSDTM — First valid exposure datetime with time imputation
+  TRTSTMF — Time imputation flag (not set if only seconds missing)
+  ITTFL   — ITT flag: Y if ARM populated, N otherwise
+  LSTAVLDT— Last known alive date from VS, AE, DS, EX
+
+Status: COMPLETED SUCCESSFULLY
