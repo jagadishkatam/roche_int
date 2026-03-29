@@ -1,7 +1,7 @@
 === ADSL Creation Log ===
-Date: 2026-03-28 20:22:05.143871 
-R Version: R version 4.5.0 (2025-04-11) 
-admiral version: 1.4.1 
+Date: 2026-03-29 10:14:27.831025 
+R Version: R version 4.4.1 (2024-06-14 ucrt) 
+admiral version: 1.1.1 
 
 Input datasets:
   DM: 306 rows
@@ -11,7 +11,7 @@ Input datasets:
   AE: 1191 rows
 
 Output:
-  ADSL: 306 subjects x 27 variables
+  ADSL: 306 subjects x 26 variables
 
 Derived variables:
   AGEGR9  — Age groups: <18, 18-50, >50

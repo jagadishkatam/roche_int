@@ -1,0 +1,331 @@
+--------------------------------------------------------------------------------
+-                                logrx Metadata                                -
+--------------------------------------------------------------------------------
+This log was generated using logrx 0.4.0
+logrx package version: 0.4.0
+logrx build: RSPM (R 4.4.0)
+logrx link to repository: https://github.com/pharmaverse/logrx
+--------------------------------------------------------------------------------
+-                          User and File Information                           -
+--------------------------------------------------------------------------------
+User: user
+File Name: question_2_adam_create_adsl.R
+File Path: C:/Users/user/OneDrive/Documents/roche_int/question_2_adam
+File HashSum: 87a1b4cb2b0490142dc9c6dfb5e3139d6d2e67c7
+--------------------------------------------------------------------------------
+-                             Session Information                              -
+--------------------------------------------------------------------------------
+─ Session info ─────────────────────────────────────────────────────────────────
+ setting  value
+ version  R version 4.4.1 (2024-06-14 ucrt)
+ os       Windows 11 x64 (build 26200)
+ system   x86_64, mingw32
+ ui       RStudio
+ language (EN)
+ collate  English_India.utf8
+ ctype    English_India.utf8
+ tz       America/Toronto
+ date     2026-03-29
+ rstudio  2024.09.1+394 Cranberry Hibiscus (desktop)
+ pandoc   NA
+
+─ Packages ─────────────────────────────────────────────────────────────────────
+ package         * version date (UTC) lib source
+ admiral         * 1.1.1   2024-06-17 [1] RSPM (R 4.4.0)
+ admiraldev        1.1.0   2024-06-06 [1] RSPM (R 4.4.0)
+ assertthat        0.2.1   2019-03-21 [1] CRAN (R 4.4.1)
+ cli               3.6.3   2024-06-21 [1] CRAN (R 4.4.1)
+ digest            0.6.37  2024-08-19 [1] CRAN (R 4.4.1)
+ dplyr           * 1.1.4   2023-11-17 [1] CRAN (R 4.4.1)
+ fansi             1.0.6   2023-12-08 [1] CRAN (R 4.4.1)
+ generics          0.1.3   2022-07-05 [1] CRAN (R 4.4.1)
+ glue              1.8.0   2024-09-30 [1] CRAN (R 4.4.1)
+ hms               1.1.3   2023-03-21 [1] CRAN (R 4.4.1)
+ lifecycle         1.0.4   2023-11-07 [1] CRAN (R 4.4.1)
+ logrx           * 0.4.0   2025-05-05 [1] RSPM (R 4.4.0)
+ lubridate       * 1.9.3   2023-09-27 [1] CRAN (R 4.4.1)
+ magrittr          2.0.3   2022-03-30 [1] CRAN (R 4.4.1)
+ pharmaverseraw  * 0.1.1   2025-08-30 [1] RSPM (R 4.4.0)
+ pharmaversesdtm * 1.3.1   2025-08-21 [1] RSPM (R 4.4.0)
+ pillar            1.9.0   2023-03-22 [1] CRAN (R 4.4.1)
+ pkgconfig         2.0.3   2019-09-22 [1] CRAN (R 4.4.1)
+ pkgload           1.4.0   2024-06-28 [1] CRAN (R 4.4.1)
+ purrr             1.0.2   2023-08-10 [1] CRAN (R 4.4.1)
+ R6                2.5.1   2021-08-19 [1] CRAN (R 4.4.1)
+ rlang             1.1.4   2024-06-04 [1] CRAN (R 4.4.1)
+ rstudioapi        0.16.0  2024-03-24 [1] CRAN (R 4.4.1)
+ sdtm.oak        * 0.2.0   2025-05-22 [1] RSPM (R 4.4.0)
+ sessioninfo       1.2.2   2021-12-06 [1] CRAN (R 4.4.1)
+ stringi           1.8.4   2024-05-06 [1] CRAN (R 4.4.0)
+ stringr         * 1.5.1   2023-11-14 [1] CRAN (R 4.4.1)
+ tibble          * 3.2.1   2023-03-20 [1] CRAN (R 4.4.1)
+ tidyr           * 1.3.1   2024-01-24 [1] CRAN (R 4.4.1)
+ tidyselect        1.2.1   2024-03-11 [1] CRAN (R 4.4.1)
+ timechange        0.3.0   2024-01-18 [1] CRAN (R 4.4.1)
+ utf8              1.2.4   2023-10-22 [1] CRAN (R 4.4.1)
+ vctrs             0.6.5   2023-12-01 [1] CRAN (R 4.4.1)
+ withr             3.0.1   2024-07-31 [1] CRAN (R 4.4.1)
+
+ [1] C:/Users/user/AppData/Local/R/win-library/4.4
+ [2] C:/Program Files/R/R-4.4.1/library
+
+─ External software ────────────────────────────────────────────────────────────
+ setting        value
+ cairo          1.18.0
+ cairoFT
+ pango
+ png            1.6.42
+ jpeg           9.6
+ tiff           LIBTIFF, Version 4.6.0
+ tcl            8.6.13
+ curl           8.6.0
+ zlib           1.3.1
+ bzlib          1.0.8, 13-Jul-2019
+ xz             5.4.6
+ deflate        1.19
+ PCRE           10.43 2024-02-16
+ ICU            74.2
+ TRE            TRE 0.8.0 R_fixes (BSD)
+ iconv          win_iconv
+ readline
+ BLAS
+ lapack
+ lapack_version 3.12.0
+
+─ Python configuration ─────────────────────────────────────────────────────────
+ Python is not available
+
+────────────────────────────────────────────────────────────────────────────────
+--------------------------------------------------------------------------------
+-                               Masked Functions                               -
+--------------------------------------------------------------------------------
+function `ae` from {package:pharmaversesdtm} by .GlobalEnv
+function `dm` from {package:pharmaversesdtm} by .GlobalEnv
+function `ds` from {package:pharmaversesdtm} by .GlobalEnv
+function `ex` from {package:pharmaversesdtm} by .GlobalEnv
+function `vs` from {package:pharmaversesdtm} by .GlobalEnv
+function `%>%` from {package:tidyr, package:admiral, package:stringr, package:dplyr} by package:tibble
+function `as_tibble` from {package:tidyr, package:dplyr} by package:tibble
+function `tibble` from {package:tidyr, package:dplyr} by package:tibble
+function `tribble` from {package:tidyr, package:dplyr} by package:tibble
+function `add_row` from {package:dplyr} by package:tibble
+function `as_data_frame` from {package:dplyr} by package:tibble
+function `data_frame` from {package:dplyr} by package:tibble
+function `glimpse` from {package:dplyr} by package:tibble
+function `lst` from {package:dplyr} by package:tibble
+function `type_sum` from {package:dplyr} by package:tibble
+function `intersect` from {package:dplyr, package:base} by package:lubridate
+function `setdiff` from {package:dplyr, package:base} by package:lubridate
+function `union` from {package:dplyr, package:base} by package:lubridate
+function `Arith` from {package:methods} by package:lubridate
+function `Compare` from {package:methods} by package:lubridate
+function `show` from {package:methods} by package:lubridate
+function `as.difftime` from {package:base} by package:lubridate
+function `date` from {package:base} by package:lubridate
+function `all_of` from {package:dplyr} by package:tidyr
+function `any_of` from {package:dplyr} by package:tidyr
+function `contains` from {package:dplyr} by package:tidyr
+function `ends_with` from {package:dplyr} by package:tidyr
+function `everything` from {package:dplyr} by package:tidyr
+function `last_col` from {package:dplyr} by package:tidyr
+function `matches` from {package:dplyr} by package:tidyr
+function `num_range` from {package:dplyr} by package:tidyr
+function `one_of` from {package:dplyr} by package:tidyr
+function `starts_with` from {package:dplyr} by package:tidyr
+function `ts` from {package:stats} by package:pharmaversesdtm
+function `cm` from {package:grDevices} by package:pharmaversesdtm
+function `desc` from {package:dplyr} by package:admiral
+function `filter` from {package:stats} by package:dplyr
+function `lag` from {package:stats} by package:dplyr
+function `setequal` from {package:base} by package:dplyr
+function `plot` from {package:base} by package:graphics
+function `body<-` from {package:base} by package:methods
+function `kronecker` from {package:base} by package:methods
+--------------------------------------------------------------------------------
+-                          Used Package and Functions                          -
+--------------------------------------------------------------------------------
+{package:admiral} derive_vars_merged, exprs, derive_vars_dtm, desc, derive_vars_dtm_to_dt, derive_var_merged_exist_flag, derive_vars_dt
+{package:base} library, cat, nrow, print, table, toupper, is.na, nchar, as.Date, ifelse, as.POSIXct, sum, max, c, is.infinite, as.numeric, summary, ncol, saveRDS, sink, as.character, Sys.time
+{package:dplyr} select, mutate, case_when, filter, arrange, group_by, slice_head, ungroup, row_number, if_else, summarise, rowwise, c_across
+{package:lubridate} as_datetime
+{package:stringr} str_detect, str_length, str_c
+{package:tibble} %>%
+{package:utils} str, head, write.csv, packageVersion
+--------------------------------------------------------------------------------
+-                         Program Run Time Information                         -
+--------------------------------------------------------------------------------
+Start time: 2026-03-29 10:14:22 EDT
+End time: 2026-03-29 10:14:28 EDT
+Run time: 6 seconds
+--------------------------------------------------------------------------------
+-                             Errors and Warnings                              -
+--------------------------------------------------------------------------------
+Errors:
+	
+
+Warnings:
+	
+--------------------------------------------------------------------------------
+-                         Messages, Output, and Result                         -
+--------------------------------------------------------------------------------
+Messages:
+	
+Output:
+	
+	=== Initial ADSL (from DM) ===
+	Subjects: 306 
+	
+	=== AGEGR9 Distribution ===
+	
+	    >50 18 - 50 
+	    305       1 
+	
+	=== AGEGR9N Distribution ===
+	
+	  2   3 
+	  1 305 
+	
+	=== Valid EX records for TRTSDTM derivation ===
+	Records: 591 
+	
+	=== TRTSDTM derivation ===
+	Subjects with TRTSDTM: 254 
+	
+	=== TRTSTMF Distribution ===
+	
+	   H <NA> 
+	 254   52 
+	
+	=== ITTFL Distribution ===
+	
+	  N   Y 
+	 52 254 
+	
+	=== LSTAVLDT Summary ===
+	        Min.      1st Qu.       Median         Mean      3rd Qu.         Max. 
+	"2012-08-13" "2013-06-03" "2013-10-14" "2013-10-20" "2014-03-12" "2015-03-05" 
+	Subjects with LSTAVLDT: 306 
+	
+	=== Final ADSL Structure ===
+	tibble [306 × 26] (S3: tbl_df/tbl/data.frame)
+	 $ STUDYID : chr [1:306] "CDISCPILOT01" "CDISCPILOT01" "CDISCPILOT01" "CDISCPILOT01" ...
+	  ..- attr(*, "label")= chr "Study Identifier"
+	 $ USUBJID : chr [1:306] "01-701-1015" "01-701-1023" "01-701-1028" "01-701-1033" ...
+	  ..- attr(*, "label")= chr "Unique Subject Identifier"
+	 $ SUBJID  : chr [1:306] "1015" "1023" "1028" "1033" ...
+	  ..- attr(*, "label")= chr "Subject Identifier for the Study"
+	 $ RFSTDTC : chr [1:306] "2014-01-02" "2012-08-05" "2013-07-19" "2014-03-18" ...
+	  ..- attr(*, "label")= chr "Subject Reference Start Date/Time"
+	 $ RFENDTC : chr [1:306] "2014-07-02" "2012-09-02" "2014-01-14" "2014-04-14" ...
+	  ..- attr(*, "label")= chr "Subject Reference End Date/Time"
+	 $ SITEID  : chr [1:306] "701" "701" "701" "701" ...
+	  ..- attr(*, "label")= chr "Study Site Identifier"
+	 $ AGE     : num [1:306] 63 64 71 74 77 85 59 68 81 84 ...
+	  ..- attr(*, "label")= chr "Age"
+	 $ AGEU    : chr [1:306] "YEARS" "YEARS" "YEARS" "YEARS" ...
+	  ..- attr(*, "label")= chr "Age Units"
+	 $ SEX     : chr [1:306] "F" "M" "M" "M" ...
+	  ..- attr(*, "label")= chr "Sex"
+	 $ RACE    : chr [1:306] "WHITE" "WHITE" "WHITE" "WHITE" ...
+	  ..- attr(*, "label")= chr "Race"
+	 $ ETHNIC  : chr [1:306] "HISPANIC OR LATINO" "HISPANIC OR LATINO" "NOT HISPANIC OR LATINO" "NOT HISPANIC OR LATINO" ...
+	  ..- attr(*, "label")= chr "Ethnicity"
+	 $ ARM     : chr [1:306] "Placebo" "Placebo" "Xanomeline High Dose" "Xanomeline Low Dose" ...
+	  ..- attr(*, "label")= chr "Description of Planned Arm"
+	 $ ARMCD   : chr [1:306] "Pbo" "Pbo" "Xan_Hi" "Xan_Lo" ...
+	  ..- attr(*, "label")= chr "Planned Arm Code"
+	 $ ACTARM  : chr [1:306] "Placebo" "Placebo" "Xanomeline High Dose" "Xanomeline Low Dose" ...
+	  ..- attr(*, "label")= chr "Description of Actual Arm"
+	 $ ACTARMCD: chr [1:306] "Pbo" "Pbo" "Xan_Hi" "Xan_Lo" ...
+	  ..- attr(*, "label")= chr "Actual Arm Code"
+	 $ COUNTRY : chr [1:306] "USA" "USA" "USA" "USA" ...
+	  ..- attr(*, "label")= chr "Country"
+	 $ AGEGR9  : chr [1:306] ">50" ">50" ">50" ">50" ...
+	 $ AGEGR9N : int [1:306] 3 3 3 3 3 3 3 3 3 3 ...
+	 $ TRTSDTM : POSIXct[1:306], format: "2014-01-02" "2012-08-05" "2013-07-19" "2014-03-18" ...
+	 $ TRTSTMF : chr [1:306] "H" "H" "H" "H" ...
+	 $ TRTEDTM : POSIXct[1:306], format: "2014-07-02" "2012-09-01" "2014-01-14" "2014-03-31" ...
+	 $ TRTEDT  : Date[1:306], format: "2014-07-02" "2012-09-01" "2014-01-14" "2014-03-31" ...
+	 $ ITTFL   : chr [1:306] "Y" "Y" "Y" "Y" ...
+	 $ LSTAVLDT: Date[1:306], format: "2014-07-02" "2013-02-18" "2014-01-14" "2014-09-15" ...
+	 $ DTHFL   : chr [1:306] NA NA NA NA ...
+	  ..- attr(*, "label")= chr "Subject Death Flag"
+	 $ DTHDTC  : chr [1:306] NA NA NA NA ...
+	  ..- attr(*, "label")= chr "Date/Time of Death"
+	
+	=== Final ADSL Summary ===
+	Number of subjects: 306 
+	Number of variables: 26 
+	
+	=== Treatment Arm Distribution ===
+	
+	             Placebo       Screen Failure Xanomeline High Dose  Xanomeline Low Dose 
+	                  86                   52                   84                   84 
+	
+	=== AGEGR9 Distribution ===
+	
+	    >50 18 - 50 
+	    305       1 
+	
+	=== AGEGR9N Distribution ===
+	
+	  2   3 
+	  1 305 
+	
+	=== ITTFL Distribution ===
+	
+	  N   Y 
+	 52 254 
+	
+	=== TRTSDTM - First 10 subjects ===
+	# A tibble: 10 × 3
+	   USUBJID     TRTSDTM             TRTSTMF
+	   <chr>       <dttm>              <chr>  
+	 1 01-701-1015 2014-01-02 00:00:00 H      
+	 2 01-701-1023 2012-08-05 00:00:00 H      
+	 3 01-701-1028 2013-07-19 00:00:00 H      
+	 4 01-701-1033 2014-03-18 00:00:00 H      
+	 5 01-701-1034 2014-07-01 00:00:00 H      
+	 6 01-701-1047 2013-02-12 00:00:00 H      
+	 7 01-701-1057 NA                  <NA>   
+	 8 01-701-1097 2014-01-01 00:00:00 H      
+	 9 01-701-1111 2012-09-07 00:00:00 H      
+	10 01-701-1115 2012-11-30 00:00:00 H      
+	
+	=== LSTAVLDT Summary ===
+	        Min.      1st Qu.       Median         Mean      3rd Qu.         Max. 
+	"2012-08-13" "2013-06-03" "2013-10-14" "2013-10-20" "2014-03-12" "2015-03-05" 
+	
+	=== First 10 rows of final ADSL ===
+	# A tibble: 10 × 26
+	   STUDYID  USUBJID SUBJID RFSTDTC RFENDTC SITEID   AGE AGEU  SEX   RACE  ETHNIC ARM   ARMCD ACTARM ACTARMCD COUNTRY AGEGR9
+	   <chr>    <chr>   <chr>  <chr>   <chr>   <chr>  <dbl> <chr> <chr> <chr> <chr>  <chr> <chr> <chr>  <chr>    <chr>   <chr> 
+	 1 CDISCPI… 01-701… 1015   2014-0… 2014-0… 701       63 YEARS F     WHITE HISPA… Plac… Pbo   Place… Pbo      USA     >50   
+	 2 CDISCPI… 01-701… 1023   2012-0… 2012-0… 701       64 YEARS M     WHITE HISPA… Plac… Pbo   Place… Pbo      USA     >50   
+	 3 CDISCPI… 01-701… 1028   2013-0… 2014-0… 701       71 YEARS M     WHITE NOT H… Xano… Xan_… Xanom… Xan_Hi   USA     >50   
+	 4 CDISCPI… 01-701… 1033   2014-0… 2014-0… 701       74 YEARS M     WHITE NOT H… Xano… Xan_… Xanom… Xan_Lo   USA     >50   
+	 5 CDISCPI… 01-701… 1034   2014-0… 2014-1… 701       77 YEARS F     WHITE NOT H… Xano… Xan_… Xanom… Xan_Hi   USA     >50   
+	 6 CDISCPI… 01-701… 1047   2013-0… 2013-0… 701       85 YEARS F     WHITE NOT H… Plac… Pbo   Place… Pbo      USA     >50   
+	 7 CDISCPI… 01-701… 1057   <NA>    <NA>    701       59 YEARS F     WHITE HISPA… Scre… Scrn… Scree… Scrnfail USA     >50   
+	 8 CDISCPI… 01-701… 1097   2014-0… 2014-0… 701       68 YEARS M     WHITE NOT H… Xano… Xan_… Xanom… Xan_Lo   USA     >50   
+	 9 CDISCPI… 01-701… 1111   2012-0… 2012-0… 701       81 YEARS F     WHITE NOT H… Xano… Xan_… Xanom… Xan_Lo   USA     >50   
+	10 CDISCPI… 01-701… 1115   2012-1… 2013-0… 701       84 YEARS M     WHITE NOT H… Xano… Xan_… Xanom… Xan_Lo   USA     >50   
+	# ℹ 9 more variables: AGEGR9N <int>, TRTSDTM <dttm>, TRTSTMF <chr>, TRTEDTM <dttm>, TRTEDT <date>, ITTFL <chr>,
+	#   LSTAVLDT <date>, DTHFL <chr>, DTHDTC <chr>
+	
+	ADSL saved to adsl.csv
+	ADSL saved to adsl.rds
+	
+	Log saved to ./question_2_adam/question_2_adam_log.txt 
+	
+	============================================
+	Question 2: ADSL creation completed successfully!
+	============================================
+
+Result:
+	NULL
+--------------------------------------------------------------------------------
+-                               Log Output File                                -
+--------------------------------------------------------------------------------
+Log name: question_2_adam_create_adsl.log
+Log path: C:/Users/user/OneDrive/Documents/roche_int/question_2_adam

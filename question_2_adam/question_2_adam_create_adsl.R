@@ -109,37 +109,33 @@ ex_valid <- ex %>%
 cat("\n=== Valid EX records for TRTSDTM derivation ===\n")
 cat("Records:", nrow(ex_valid), "\n")
 
+ex_dtm <- ex_valid %>% mutate(len=str_length(EXSTDTC), 
+                              EXSTDT=as.Date(EXSTDTC),
+                    EXSTFL=ifelse(len>10,'N','Y'),
+                    EXSTDTC2=ifelse(EXSTFL=='Y',str_c(EXSTDTC,'T00:00:00'),EXSTDTC),
+                    TRTSTMF=ifelse(EXSTFL=='Y','H',NA)) %>% arrange(USUBJID,EXTRT,EXSTDTC2) %>% 
+                    group_by(USUBJID,EXTRT) %>% slice_head(n=1) %>% select(USUBJID,EXTRT, EXSTDT, EXSTDTC2,TRTSTMF) %>% 
+                    ungroup() %>% 
+  mutate(TRTSDTM= as.POSIXct(as_datetime(EXSTDTC2), format = "%Y-%m-%d %H:%M:%S", tz = "UTC") )
+
+
 # Step 4b: Use admiral's derive_vars_dtm() to convert EXSTDTC to datetime
 #          with time imputation
-ex_dtm <- ex_valid %>%
-  derive_vars_dtm(
-    dtc         = EXSTDTC,
-    new_vars_prefix = "EXST",
-    highest_imputation = "h",     # Impute up to hours (h = hours, not seconds)
-    time_imputation    = "first"  # Missing time → 00:00:00
-  )
 
 # Step 4c: Select earliest exposure per subject (first dose datetime)
-ex_first <- ex_dtm %>%
-  arrange(USUBJID, EXSTDTM) %>%
-  group_by(USUBJID) %>%
-  filter(row_number() == 1) %>%
-  ungroup() %>%
-  select(USUBJID, TRTSDTM = EXSTDTM, TRTSTMF = EXSTTMF)
+
 
 # Step 4d: Merge into ADSL
 adsl <- adsl %>%
   derive_vars_merged(
-    dataset_add = ex_first,
+    dataset_add = ex_dtm,
     by_vars     = exprs(USUBJID),
     new_vars    = exprs(TRTSDTM, TRTSTMF)
   )
 
 # Step 4e: Derive TRTSDT (date part of TRTSDTM) using admiral
-adsl <- adsl %>%
-  derive_vars_dtm_to_dt(
-    source_vars = exprs(TRTSDTM)
-  )
+
+
 
 cat("\n=== TRTSDTM derivation ===\n")
 cat("Subjects with TRTSDTM:", sum(!is.na(adsl$TRTSDTM)), "\n")
@@ -180,7 +176,7 @@ adsl <- adsl %>%
 # ITTFL = "Y" if DM.ARM is not equal to missing, else "N"
 adsl <- adsl %>%
   derive_var_merged_exist_flag(
-    dataset_add = dm %>% filter(!is.na(ARM) & ARM != ""),
+    dataset_add = dm %>% filter(!is.na(ARM) & ARM != "" & !is.na(RFSTDTC)),
     by_vars     = exprs(USUBJID),
     new_var     = ITTFL,
     condition    = TRUE
@@ -300,7 +296,7 @@ adsl_final <- adsl %>%
     # Derived: Age Grouping
     AGEGR9, AGEGR9N,
     # Derived: Treatment Start
-    TRTSDTM, TRTSTMF, TRTSDT,
+    TRTSDTM, TRTSTMF, 
     # Derived: Treatment End
     TRTEDTM, TRTEDT,
     # Derived: ITT Flag
@@ -332,7 +328,7 @@ cat("\n=== ITTFL Distribution ===\n")
 print(table(adsl_final$ITTFL, useNA = "ifany"))
 
 cat("\n=== TRTSDTM - First 10 subjects ===\n")
-print(adsl_final %>% select(USUBJID, TRTSDTM, TRTSTMF, TRTSDT) %>% head(10))
+print(adsl_final %>% select(USUBJID, TRTSDTM, TRTSTMF) %>% head(10))
 
 cat("\n=== LSTAVLDT Summary ===\n")
 print(summary(adsl_final$LSTAVLDT))
